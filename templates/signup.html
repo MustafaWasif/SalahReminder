@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Salah Notifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    -->
+</head>
+<style>
+    .tooltip {
+        visibility: hidden
+    }
+    #email:hover .tooltip{
+        visibility: visible;
+    }
+</style>
+<body>
+    <div>
+        <h3>Please complete fields below to setup your prayer nofications</h3>
+        <br/>
+        <form action = "" method="post">
+            <label>Email:</label>
+            <input id="email" type="email" placeholder="Email address" name="email" value="{{ request.form.email }}" required>
+            <span class="tooltip">We will send prayer reminder messages through this email</span>
+            <br/>
+            <label>Country:</label>
+            <input id="country" type="text" placeholder="Country of residence" name="country" value="{{ request.form.country }}" required>
+            <br/>
+            <label>City:</label>
+            <input id="city" type="text" placeholder="city name or state" name="city" value="{{ request.form.city }}" required>
+            <br/></br>
+            <button id="btn" type="submit">Setup Reminder</button>
+        </form>
+    </div>
+    <div>
+        {% if error_msg != None %}
+            <p id = error><strong>Error: </strong> {{ error_msg }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
